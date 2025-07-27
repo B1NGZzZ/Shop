@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olive Brunch - Premium griechische Oliven & Olivenöl</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="i18n.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        olive: {
+                            100: '#e8e8d0',
+                            200: '#d1d1a1',
+                            300: '#baba72',
+                            400: '#a3a343',
+                            500: '#8c8c14',
+                            600: '#707010',
+                            700: '#54540c',
+                            800: '#383808',
+                            900: '#1c1c04',
+                        },
+                        mediterranean: {
+                            blue: '#3a6ea5',
+                            sand: '#f5e8c3',
+                            terracotta: '#c77966'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Open Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1619642751033-0c8bd380389d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-bg {
+            background-color: rgba(245, 232, 195, 0.3);
+        }
+
+        .nav-link:hover {
+            color: #8c8c14;
+        }
+
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #707010;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-mediterranean-sand">
+    <!-- Header/Navigation -->
+   <header …>
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+
+    <!-- Branding bleibt gleich -->
+    <div class="flex items-center">
+      …  
+    </div>
+
+    <!-- Neuer Wrapper für Nav + Icons -->
+    <div class="hidden md:flex items-center space-x-6">
+      
+      <!-- Deine Navigation -->
+      <nav class="flex space-x-8">
+        <a …>Produkte</a>
+        <a …>Über uns</a>
+        <a …>Kontakt</a>
+      </nav>
+
+      <!-- Icon-Gruppe -->
+      <div class="flex items-center space-x-4">
+        <a …><i class="fas fa-shopping-cart"></i></a>
+        <a …><i class="fas fa-user"></i></a>
+        <button class="md:hidden …"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+    <!-- Hero Section 
+    <section class="bg-[#3b5323] text-white py-20 md:py-32">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="font-serif text-4xl md:text-6xl font-bold mb-6">Echter Geschmack Griechenlands</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Premium Oliven und kaltgepresstes Olivenöl direkt aus den sonnenverwöhnten Hainen Kretas</p>
+            <a href="#products" class="btn-primary inline-block bg-olive-500 text-white px-8 py-3 rounded-full font-medium">Jetzt entdecken</a>
+        </div> -->
+    </section>
+
+    <!-- Sprachumschalter -->
+    <div class="bg-[#3b5323] text-right p-4">
+        <button onclick="switchLanguage('de')" class="px-4 py-2">Deutsch</button>
+        <button onclick="switchLanguage('en')" class="px-4 py-2">English</button>
+    </div>
+
+    <!-- Hero mit data-Attributen 
+<section class="bg-[#3b5323] text-white py-20 md:py-32">
+  <div class="container mx-auto px-4 text-center">
+    <h1 id="hero-title" data-de="Echter Geschmack Griechenlands" data-en="True Taste of Greece">
+      
+    </h1>
+    <p id="hero-desc" data-de="Premium Oliven und kaltgepresstes Olivenöl direkt aus den sonnenverwöhnten Hainen Kretas"
+       data-en="From the Koroni region: Our olives and cold-pressed olive oil are made from the prized Kalamaki olive – shaped by sun, sea, and centuries of tradition.">
+      
+    </p>
+    <a href="#products" id="hero-btn" class="btn-primary inline-block bg-olive-500 text-white px-8 py-3 rounded-full font-medium"
+       data-de="Jetzt entdecken" data-en="Discover now">Jetzt entdecken</a>
+  </div>
+</section> -->
+
+    <!-- i18n Script laden -->
+    <script type="module" src="i18n.js"></script>
+    <!-- JavaScript-Funktion -->
+    <script>
+        function switchLanguage(lang) {
+            document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
+        }
+
+
+    </script>
+    <!-- Featured Products -->
+    <section id="products" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-olive-700 mb-4">Unsere Premium-Produkte</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Ausgewählte Oliven und Öle aus kontrolliert biologischem
+                    Anbau, handverlesen und traditionell verarbeitet</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1604977043421-d04f3c7f1a39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Kalamata Oliven" class="w-full h-full object-cover">
+                        <div
+                            class="absolute top-2 right-2 bg-olive-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                            BIO</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">Kalamata Oliven</h3>
+                        <p class="text-gray-600 text-sm mb-4">Handverlesene griechische Kalamata Oliven in Öl</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-olive-700">€9,90</span>
+                            <button class="btn-primary bg-olive-500 text-white px-4 py-2 rounded-full text-sm">In den
+                                Warenkorb</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2030&q=80"
+                            alt="Natives Olivenöl extra" class="w-full h-full object-cover">
+                        <div
+                            class="absolute top-2 right-2 bg-olive-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                            BIO</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">Natives Olivenöl extra</h3>
+                        <p class="text-gray-600 text-sm mb-4">Kaltgepresstes Premium-Olivenöl aus der Koroni-Region –
+                            gewonnen aus der aromatischen Kalamaki-Olive. 500ml</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-olive-700">€9,90</span>
+                            <button class="btn-primary bg-olive-500 text-white px-4 py-2 rounded-full text-sm">In den
+                                Warenkorb</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1604977043421-d04f3c7f1a39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Gemischte Oliven" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">Griechischer Honig</h3>
+                        <p class="text-gray-600 text-sm mb-4">Reiner Honig aus Koroni, Messinia – sonnengereift und
+                            voller griechischer Charakter.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-olive-700">€6,50
+
+                            </span>
+                            <button class="btn-primary bg-olive-500 text-white px-4 py-2 rounded-full text-sm">In den
+                                Warenkorb</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2030&q=80"
+                            alt="Olivenöl mit Kräutern" class="w-full h-full object-cover">
+                        <div
+                            class="absolute top-2 right-2 bg-olive-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                            BIO</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">Getrokneter Oregano</h3>
+                        <p class="text-gray-600 text-sm mb-4"> Reiner Oregano aus eigenem Anbau – naturbelassen,
+                            handverlesen und frei von Zusätzen.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-olive-700">€16,90</span>
+                            <button class="btn-primary bg-olive-500 text-white px-4 py-2 rounded-full text-sm">In den
+                                Warenkorb</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-olive-500 text-olive-500 px-6 py-2 rounded-full font-medium hover:bg-olive-500 hover:text-white transition">Alle Produkte anzeigen</a>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-olive-100">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <img src="https://images.unsplash.com/photo-1604977043421-d04f3c7f1a39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="Olivenhain in Griechenland" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-olive-700 mb-6">Unsere Geschichte</h2>
+                    <p class="text-gray-700 mb-4">Olive Brunch – aus Leidenschaft für echte griechische Oliven und
+                        hochwertiges Olivenöl.
+                    </p>Wir sind ein Familienbetrieb aus der Region Koroni in Messinien und bewirtschaften seit
+                    Generationen Olivenhaine mit der traditionellen Koroneiki-Olive.</p>
+
+                    </p> Unsere Oliven werden von Hand geerntet und schonend verarbeitet. Das Öl wird kaltgepresst, um
+                    seinen natürlichen Geschmack und alle wertvollen Inhaltsstoffe zu erhalten.</p>
+
+                    </p> Unsere Bäume werden ausschließlich auf natürlichem Weg gedüngt – ganz ohne chemische Zusätze.
+                    Wir setzen auf nachhaltigen Anbau, ehrliche Handarbeit und faire Bedingungen – für ein Olivenöl,
+                    das Herkunft und Qualität in jeder Flasche spürbar macht.</p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-leaf text-olive-500 mr-2"></i>
+                            <span class="text-gray-700">100% Schonend</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-hand-holding-heart text-olive-500 mr-2"></i>
+                            <span class="text-gray-700">Handverlesen</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-tractor text-olive-500 mr-2"></i>
+                            <span class="text-gray-700">Nachhaltiger Anbau</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-olive-700 mb-4">Warum unsere Produkte?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Gesundheit und Genuss aus der mediterranen Küche</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 rounded-lg">
+                    <div class="bg-olive-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-heart text-olive-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">Herzgesund</h3>
+                    <p class="text-gray-600">Reich an ungesättigten Fettsäuren, die das Herz-Kreislauf-System
+                        unterstützen</p>
+                </div>
+
+                <div class="text-center p-6 rounded-lg">
+                    <div class="bg-olive-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-seedling text-olive-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">Antioxidantien</h3>
+                    <p class="text-gray-600">Hoher Gehalt an Polyphenolen, die vor freien Radikalen schützen</p>
+                </div>
+
+                <div class="text-center p-6 rounded-lg">
+                    <div class="bg-olive-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-utensils text-olive-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">Vielseitig</h3>
+                    <p class="text-gray-600">Perfekt für Salate, zum Kochen oder einfach mit frischem Brot</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials
+    <section id="testimonials" class="py-16 testimonial-bg">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-olive-700 mb-4">Was unsere Kunden sagen</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Echte Meinungen von zufriedenen Genießern</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">"Die Kalamata Oliven sind einfach unschlagbar! So einen
+                        intensiven Geschmack habe ich noch nie erlebt. Bestelle jetzt regelmäßig."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 mr-3 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Maria S."
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Maria S.</h4>
+                            <p class="text-gray-500 text-sm">Stammkundin seit 2021</p>
+                        </div>
+                    </div>
+                </div>  
+
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">"Das Olivenöl hat unsere Küche revolutioniert. Die Qualität ist
+                        hervorragend und der Geschmack unvergleichlich. Absolute Empfehlung!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 mr-3 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Thomas K."
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Thomas K.</h4>
+                            <p class="text-gray-500 text-sm">Koch</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">"Tolle Auswahl an griechischen Spezialitäten. Der Service ist
+                        ausgezeichnet und die Lieferung immer pünktlich. Werde definitiv wieder bestellen."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 mr-3 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sabine L."
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Sabine L.</h4>
+                            <p class="text-gray-500 text-sm">Food-Bloggerin</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <section class="bg-neutral-100 text-center py-16 px-4">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4">Besuche unsere Olivenfarm!</h2>
+        <p class="text-lg md:text-xl mb-6 max-w-2xl mx-auto">
+            Sie möchten erleben, wo unsere Oliven wachsen? Besuchen Sie eine unserer Farmen. – sonnig,
+            friedlich und voller Geschmack.
+        </p>
+        <a href="https://www.airbnb.de/s/Kreta--Griechenland/homes?host_id=DEIN_HOST_ID" target="_blank"
+            class="inline-block bg-olive-500 text-white px-6 py-3 rounded-full font-medium hover:bg-olive-600 transition">
+            Jetzt Unterkunft ansehen auf Airbnb
+        </a>
+    </section>
+    <!-- Newsletter -->
+    <section class="py-16 bg-olive-700 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold mb-6">Melde dich für unseren Newsletter an</h2>
+                <p class="mb-8">Erhalte 10% Rabatt auf deine erste Bestellung und bleibe über neue Produkte und Specials
+                    informiert.</p>
+                <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" placeholder="Deine E-Mail-Adresse"
+                        class="flex-grow px-4 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-olive-300">
+                    <button type="submit"
+                        class="btn-primary bg-mediterranean-terracotta px-6 py-3 rounded-full font-medium whitespace-nowrap">Anmelden</button>
+                </form>
+                <p class="text-olive-200 text-xs mt-4">Wir geben deine Daten nicht weiter. Du kannst dich jederzeit
+                    abmelden.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-olive-700 mb-6">Kontakt</h2>
+                    <p class="text-gray-700 mb-6">Hast du Fragen zu unseren Produkten oder möchtest du eine
+                        Großbestellung aufgeben? Wir helfen dir gerne weiter!</p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-olive-500 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Adresse</h4>
+                                <p class="text-gray-600">Olive Brunch GmbH<br>Mediterrane Straße 12<br>12345 Athen,
+                                    Griechenland</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-olive-500 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">E-Mail</h4>
+                                <p class="text-gray-600">info@olive-brunch.de</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt text-olive-500 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Telefon</h4>
+                                <p class="text-gray-600">+30 210 1234567</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <i class="fas fa-clock text-olive-500 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Öffnungszeiten</h4>
+                                <p class="text-gray-600">Mo-Fr: 9:00 - 18:00 Uhr<br>Sa: 10:00 - 14:00 Uhr</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2">
+                    <form class="bg-olive-50 p-6 rounded-lg">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                            <input type="text" id="name"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive-300">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">E-Mail</label>
+                            <input type="email" id="email"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive-300">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Betreff</label>
+                            <input type="text" id="subject"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive-300">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Nachricht</label>
+                            <textarea id="message" rows="4"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive-300"></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="btn-primary bg-olive-500 text-white px-6 py-3 rounded-full font-medium">Nachricht
+                            senden</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cartModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-serif text-2xl font-bold text-olive-700">Warenkorb</h3>
+                    <button id="closeCart" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <div id="cartItems" class="space-y-4 mb-6">
+                    <!-- Cart items will be added here dynamically -->
+                </div>
+
+                <div class="border-t border-gray-200 pt-4 mb-6">
+                    <div class="flex justify-between font-bold text-lg mb-4">
+                        <span>Gesamt:</span>
+                        <span id="cartTotal">€0,00</span>
+                    </div>
+                    <button
+                        class="w-full bg-olive-500 text-white py-3 rounded-full font-medium hover:bg-olive-600 transition">
+                        Zur Kasse gehen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-olive-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-olive-branch text-olive-300 text-2xl mr-2"></i>
+                        <span class="text-xl font-serif font-bold">Olive Brunch</span>
+                    </div>
+                    <p class="text-olive-200 mb-4">Premium griechische Oliven und Olivenöl aus natürlichem Anbau.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-olive-300 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-olive-300 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-olive-300 hover:text-white"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-serif text-lg font-bold mb-4">Shop</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-olive-200 hover:text-white">Alle Produkte</a></li>
+                        <li><a href="#" class="text-olive-200 hover:text-white">Oliven</a></li>
+                        <li><a href="#" class="text-olive-200 hover:text-white">Olivenöl</a></li>
+                        <li><a href="#" class="text-olive-200 hover:text-white">Geschenksets</a></li>
+                        <li><a href="#" class="text-olive-200 hover:text-white">Angebote</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-serif text-lg font-bold mb-4">Informationen</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-olive-200 hover:text-white">Über uns</a></li>
+                        <li><a href="#" class="text-olive-200 hover:text-white">Versand & Lieferung</a></li>
+                        <li><a href="#" class="text-olive-200 hover:text-white">Zahlungsmethoden</a></li>
+                        <li><a href="#" class="text-olive-200 hover:t 
+
+
+ext-white">Datenschutz</a></li>
+                        <li><a href="#" class="text-olive-200 hover:text-white">AGB</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-serif text-lg font-bold mb-4">Kontakt</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt text-olive-300 mt-1 mr-2"></i>
+                            <span></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-olive-300 mt-1 mr-2"></i>
+                            <span>info@olive-brunch.de</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-olive-300 mt-1 mr-2"></i>
+                            <span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-olive-700 mt-8 pt-8 text-center text-olive-300 text-sm">
+                <p>&copy; 2023 Olive Brunch GmbH. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Translation data
+        const translations = {
+            'de': {
+                'heroTitle': 'Echter Geschmack Griechenlands',
+                'heroSubtitle': 'Premium Oliven und kaltgepresstes Olivenöl direkt aus den sonnenverwöhnten Hainen Kretas',
+                'productsTitle': 'Unsere Premium-Produkte',
+                'productsSubtitle': 'Ausgewählte Oliven und Öle aus kontrolliert biologischem Anbau, handverlesen und traditionell verarbeitet',
+                'viewAll': 'Alle Produkte anzeigen',
+                // Weitere Übersetzungen würden hier hinzugefügt werden
+            },
+            'en': {
+                'heroTitle': 'Authentic Taste of Greece',
+                'heroSubtitle': 'Premium olives and cold-pressed olive oil directly from the sun-drenched groves of Crete',
+                'productsTitle': 'Our Premium Products',
+                'productsSubtitle': 'Selected olives and oils from controlled organic farming, handpicked and traditionally processed',
+                'viewAll': 'View all products',
+            },
+            'el': {
+                'heroTitle': 'Αυθεντική Γεύση Ελλάδας',
+                'heroSubtitle': 'Πρεμιέμ ελιές και παρθένο ελαιόλαδο απευθείας από τους ηλιολουσμένους αμπελώνες της Κρήτης',
+                'productsTitle': 'Τα Πρεμιέμ Προϊόντα Μας',
+                'productsSubtitle': 'Επιλεγμένες ελιές και ελαιόλαδα από ελεγχόμενη βιολογική καλλιέργεια, επιλεγμένες με το χέρι και παραδοσιακά επεξεργασμένες',
+                'viewAll': 'Προβολή όλων των προϊόντων',
+            }
+        };
+
+        let currentLang = 'de';
+
+        // Cart functionality
+        let cart = [];
+
+        // Open/close cart modal
+        document.getElementById('cartButton').addEventListener('click', function (e) {
+            e.preventDefault();
+            document.getElementById('cartModal').classList.remove('hidden');
+        });
+
+        document.getElementById('closeCart').addEventListener('click', function () {
+            document.getElementById('cartModal').classList.add('hidden');
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function () {
+                const productCard = this.closest('.product-card');
+                const productName = productCard.querySelector('h3').textContent;
+                const productPrice = productCard.querySelector('span').textContent;
+                const productImage = productCard.querySelector('img').src;
+                const priceValue = parseFloat(productPrice.replace('€', '').replace(',', '.'));
+
+                // Check if product already in cart
+                const existingItem = cart.find(item => item.name === productName);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({
+                        name: productName,
+                        price: priceValue,
+                        image: productImage,
+                        quantity: 1
+                    });
+                }
+
+                updateCart();
+                document.getElementById('cartModal').classList.remove('hidden');
+            });
+        });
+
+        // Language switcher functionality
+        document.querySelectorAll('.lang-option').forEach(btn => {
+            btn.addEventListener('click', function () {
+                currentLang = this.dataset.lang;
+                document.getElementById('currentLangFlag').src = `https://flagcdn.com/w20/${this.dataset.flag}.png`;
+                updateTranslations();
+            });
+        });
+
+        function updateTranslations() {
+            // Update all translatable elements
+            document.querySelector('.hero-bg h1').textContent = translations[currentLang].heroTitle;
+            document.querySelector('.hero-bg p').textContent = translations[currentLang].heroSubtitle;
+            document.querySelector('#products h2').textContent = translations[currentLang].productsTitle;
+            document.querySelector('#products p').textContent = translations[currentLang].productsSubtitle;
+            document.querySelector('#products a').textContent = translations[currentLang].viewAll;
+            // Weitere Elemente würden hier übersetzt werden
+        }
+
+        // Update cart UI
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const cartCount = document.getElementById('cartCount');
+
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+
+                const itemElement = document.createElement('div');
+                itemElement.className = 'flex items-start border-b border-gray-100 pb-4';
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded mr-4">
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-gray-800">${item.name}</h4>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="flex items-center border border-gray-300 rounded-full">
+                                <button class="quantity-btn px-3 py-1 text-gray-600 hover:bg-gray-100" data-index="${index}" data-action="decrease">-</button>
+                                <span class="px-2">${item.quantity}</span>
+                                <button class="quantity-btn px-3 py-1 text-gray-600 hover:bg-gray-100" data-index="${index}" data-action="increase">+</button>
+                            </div>
+                            <span class="font-bold">€${(item.price * item.quantity).toFixed(2).replace('.', ',')}</span>
+                        </div>
+                    </div>
+                    <button class="remove-btn ml-4 text-gray-400 hover:text-red-500" data-index="${index}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                cartItems.appendChild(itemElement);
+            });
+
+            cartTotal.textContent = `€${total.toFixed(2).replace('.', ',')}`;
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            if (totalItems > 0) {
+                cartCount.textContent = totalItems;
+                cartCount.classList.remove('hidden');
+            } else {
+                cartCount.classList.add('hidden');
+            }
+        }
+
+        // Handle quantity changes and removal
+        document.addEventListener('click', function (e) {
+            if (e.target.closest('.quantity-btn')) {
+                const btn = e.target.closest('.quantity-btn');
+                const index = parseInt(btn.dataset.index);
+                const action = btn.dataset.action;
+
+                if (action === 'increase') {
+                    cart[index].quantity++;
+                } else if (action === 'decrease' && cart[index].quantity > 1) {
+                    cart[index].quantity--;
+                }
+
+                updateCart();
+            }
+
+            if (e.target.closest('.remove-btn')) {
+                const btn = e.target.closest('.remove-btn');
+                const index = parseInt(btn.dataset.index);
+                cart.splice(index, 1);
+                updateCart();
+            }
+        });
+
+        // Mobile menu toggle (would need more implementation)
+        document.querySelector('.md\\:hidden').addEventListener('click', function () {
+            alert('Mobile Menü würde hier geöffnet werden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.id !== 'cartButton') {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
